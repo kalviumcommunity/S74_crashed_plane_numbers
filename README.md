@@ -22,4 +22,6 @@ The primary objective of this project is to:
 - Test our knowledge to identify strong and weak areas.
 - Embrace project-based learning to make the learning process practical and enjoyable.
 
+- deployment link [https://s74-crashed-plane-numbers-2.onrender.com]
+
  
