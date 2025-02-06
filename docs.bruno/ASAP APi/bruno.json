@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "ASAP APi",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
