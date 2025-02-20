@@ -2,9 +2,6 @@
   "name": "s74_crashed_plane_numbers",
   "version": "1.0.0",
   "description": "List of Airplanes That Crashed",
-
-  "main": "routes.js",
-
   "main": "server.js",
 
   "scripts": {
