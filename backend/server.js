@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const { MongoClient } = require("mongodb");
+const routes = require("./routes"); // Import routes
 
 const app = express();
 const PORT = 3000;
@@ -18,13 +19,13 @@ async function connectDB() {
 
 connectDB();
 
+app.use(express.json()); // Middleware to parse JSON
+// app.locals.client = client; // Store DB client for routes
+
+app.use("/api", routes); // Use the CRUD routes
+
 app.get("/ping", (req, res) => {
     res.send("pong");
-});
-
-app.get("/", async (req, res) => {
-    const isConnected = client.topology && client.topology.isConnected();
-    res.json({ database_status: isConnected ? "Connected" : "Not Connected" });
 });
 
 app.listen(PORT, () => {
