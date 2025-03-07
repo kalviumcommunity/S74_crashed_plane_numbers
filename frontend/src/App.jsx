@@ -1,7 +1,13 @@
-import LandingPage from "./LandingPage";
 
+import LandingPage from "./LandingPage.jsx";
+import PlaneCrashList from "./components/PlaneCrashList.jsx";
 function App() {
-  return <LandingPage />;
+    return (
+        <div>
+            <LandingPage />
+            <PlaneCrashList/>
+        </div>
+    );
 }
 
 export default App;
