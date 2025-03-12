@@ -1,33 +1,27 @@
-require("dotenv").config();
 const express = require("express");
-const { MongoClient } = require("mongodb");
-const routes = require("./routes"); // Import routes
+const cors = require("cors");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const crashRoutes = require("./routes/crashes"); // ✅ Import Routes
+
+dotenv.config();
 
 const app = express();
-const PORT = 3000;
+app.use(cors());
+app.use(express.json());
 
-const client = new MongoClient(process.env.MONGO_URI);
+// ✅ Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log("✅ Database Connected Successfully!"))
+.catch((error) => console.error("❌ Database Connection Failed:", error));
 
-async function connectDB() {
-    try {
-        await client.connect();
-        console.log("✅ Database Connected Successfully!");
-    } catch (error) {
-        console.error("❌ Database Connection Failed:", error);
-    }
-}
+// ✅ Use Crash Routes
+app.use("/api", crashRoutes);
 
-connectDB();
-
-app.use(express.json()); // Middleware to parse JSON
-// app.locals.client = client; // Store DB client for routes
-
-app.use("/api", routes); // Use the CRUD routes
-
-app.get("/ping", (req, res) => {
-    res.send("pong");
-});
-
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

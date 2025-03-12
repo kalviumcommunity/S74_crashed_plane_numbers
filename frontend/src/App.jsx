@@ -1,11 +1,12 @@
-
-import LandingPage from "./LandingPage.jsx";
-import PlaneCrashList from "./components/PlaneCrashList.jsx";
+import PlaneCrashList from "./components/PlaneCrashList";
+import LandingPage from "./LandingPage";
 function App() {
     return (
         <div>
-            <LandingPage />
-            <PlaneCrashList/>
+             <LandingPage/>
+            <h1>Plane Crash Reports</h1>
+            <PlaneCrashList />
+          
         </div>
     );
 }

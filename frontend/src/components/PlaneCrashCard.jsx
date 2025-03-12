@@ -1,18 +1,16 @@
-
-import PropTypes from "prop-types"; // Import prop-types
+import PropTypes from "prop-types";
 
 function PlaneCrashCard({ crash }) {
     return (
-        <div style={{ border: "1px solid black", padding: "10px", margin: "10px" }}>
-            <h3>{crash.title}</h3>
-            <p><strong>Year:</strong> {crash.year}</p>
+        <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px", borderRadius: "5px" }}>
+            <h3>{crash.title} ({crash.year})</h3>
             <p><strong>Location:</strong> {crash.location}</p>
             <p><strong>Summary:</strong> {crash.summary}</p>
         </div>
     );
 }
 
-// ✅ Add PropTypes validation
+// ✅ Fix: Define PropTypes here
 PlaneCrashCard.propTypes = {
     crash: PropTypes.shape({
         title: PropTypes.string.isRequired,

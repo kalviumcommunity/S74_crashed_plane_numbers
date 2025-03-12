@@ -1,18 +1,24 @@
-
+import { useEffect, useState } from "react";
 import PlaneCrashCard from "./PlaneCrashCard.jsx";
 
-const sampleCrashes = [
-    { id: 1, title: "Flight 123 Crash", year: 1999, location: "New York, USA", summary: "A tragic crash due to engine failure." },
-    { id: 2, title: "Airline X Disaster", year: 2005, location: "Tokyo, Japan", summary: "Severe turbulence caused loss of control." }
-];
-
 function PlaneCrashList() {
+    const [crashes, setCrashes] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3000/api/crashes")
+            .then(response => response.json())
+            .then(data => setCrashes(data))
+            .catch(error => console.error("Error fetching data:", error));
+    }, []);
+
     return (
         <div>
             <h2>Plane Crash Data</h2>
-            {sampleCrashes.map(crash => (
-                <PlaneCrashCard key={crash.id} crash={crash} />
-            ))}
+            {crashes.length > 0 ? (
+                crashes.map(crash => <PlaneCrashCard key={crash.id} crash={crash} />)
+            ) : (
+                <p>Loading...</p>
+            )}
         </div>
     );
 }
