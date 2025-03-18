@@ -19,7 +19,7 @@ function PlaneCrashList() {
         <div>
             <h2>Plane Crash Data</h2>
             {crashes.length > 0 ? (
-                crashes.map(crash => <PlaneCrashCard key={crash._id} crash={crash} />)
+                crashes.map(crash => <PlaneCrashCard key={crash._id} crash={crash} refreshData={fetchCrashes} />)
             ) : (
                 <p>Loading...</p>
             )}
