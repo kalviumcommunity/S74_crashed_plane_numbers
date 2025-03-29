@@ -21,6 +21,7 @@ function PlaneCrashCard({ crash, refreshData }) {
             <h3>{crash.title} ({crash.year})</h3>
             <p><strong>Location:</strong> {crash.location}</p>
             <p><strong>Summary:</strong> {crash.summary}</p>
+            <p><strong>Created By:</strong> {crash.created_by}</p> {/* ✅ FIXED */}
             <button onClick={() => navigate(`/update-crash/${crash._id}`)}>Update</button>
             <button onClick={handleDelete} style={{ marginLeft: "10px", backgroundColor: "red", color: "white" }}>
                 Delete
@@ -36,6 +37,7 @@ PlaneCrashCard.propTypes = {
         year: PropTypes.number.isRequired,
         location: PropTypes.string.isRequired,
         summary: PropTypes.string.isRequired,
+        created_by: PropTypes.string, // ✅ Added this to PropTypes
     }).isRequired,
     refreshData: PropTypes.func.isRequired,
 };

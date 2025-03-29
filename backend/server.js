@@ -2,13 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const crashRoutes = require("./routes/crashes"); // ✅ Import Routes
+const crashRoutes = require("./routes/crashes"); // Import Routes
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); // ✅ Make sure the server can parse JSON
 
 // ✅ Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
